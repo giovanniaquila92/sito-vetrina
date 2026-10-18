@@ -3,10 +3,10 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Giovanni Aquila</title>
   <meta name="description"
-    content="Giovanni Aquila: IT Application Architect, giudice sportivo e arbitro PLV Hitball. Strumenti, progetti e riferimenti.">
+    content="Giovanni Aquila: architetto IT, giudice sportivo e arbitro PLV Hitball, Lord of Kilnaish and Glencoe. Strumenti, progetti e riferimenti.">
   <link rel="icon"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏒%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,6 +22,9 @@
       --snow: #effaf8;
       --mute: #9cc9c5;
       --aqua: #3fe0c8;
+      --pop: #ffd23f;
+      --red: #ff4a3d;
+      --red-d: #d92b1f;
       --head: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
       --body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
       color-scheme: dark;
@@ -51,156 +54,240 @@
     }
 
     a:hover {
-      color: #fff;
-      text-decoration-color: #fff
+      color: var(--red);
+      text-decoration-color: var(--red)
     }
 
     a:focus-visible {
-      outline: 3px solid var(--aqua);
+      outline: 3px solid var(--pop);
       outline-offset: 3px;
       border-radius: 2px
     }
 
     main {
-      max-width: 46rem;
+      max-width: 62rem;
       margin: 0 auto;
-      padding: max(3rem, env(safe-area-inset-top)) 1.25rem 3rem
+      padding: max(3rem, env(safe-area-inset-top)) 1.25rem max(3rem, env(safe-area-inset-bottom))
     }
 
     h1,
-    h2 {
+    h2,
+    h3 {
       font-family: var(--head);
       line-height: 1.05;
       margin: 0
     }
 
+    .hello {
+      font: 800 1.1rem var(--head);
+      color: var(--red);
+      margin: 0 0 .5rem
+    }
+
     h1 {
       font-weight: 800;
-      font-size: clamp(3rem, 13vw, 6rem);
-      letter-spacing: -.03em
+      font-size: clamp(3.2rem, 14vw, 7.5rem);
+      letter-spacing: -.035em
     }
 
     h2 {
       font-weight: 800;
-      font-size: 1.6rem;
-      letter-spacing: -.01em;
-      margin-bottom: 1rem
+      font-size: clamp(1.8rem, 5vw, 2.4rem);
+      letter-spacing: -.02em;
+      margin-bottom: 1.5rem;
+      padding-left: .8rem;
+      border-left: 8px solid var(--red)
+    }
+
+    h3 {
+      font-weight: 800;
+      font-size: 1.35rem;
+      margin-bottom: .6rem
     }
 
     .lead {
-      font-size: 1.25rem;
-      color: var(--snow);
-      max-width: 34rem;
-      margin: 1.25rem 0 .75rem
+      font-size: 1.3rem;
+      max-width: 40rem;
+      margin: 1.5rem 0 1.25rem
     }
 
     .sub {
       color: var(--mute);
-      margin: 0;
-      max-width: 34rem
+      margin: 1.25rem 0 0;
+      max-width: 40rem
     }
 
-    /* la linea tratteggiata, come quella di centro pista, separa le sezioni */
-    section {
-      position: relative;
-      margin-top: 3.5rem;
-      padding-top: 2.5rem
-    }
-
-    section::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: repeating-linear-gradient(90deg, var(--aqua) 0 14px, transparent 14px 20px)
-    }
-
-    .rows {
+    .stickers {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
       list-style: none;
       margin: 0;
       padding: 0
     }
 
-    .rows li {
+    .stickers li {
+      font: 800 .95rem var(--head);
+      padding: .45rem .9rem;
+      border: 2px solid var(--red);
+      border-radius: 2rem;
+      background: var(--ice-2);
+      transform: rotate(-1.5deg)
+    }
+
+    .stickers li:nth-child(even) {
+      transform: rotate(1.2deg)
+    }
+
+    .stickers li.lord {
+      background: var(--pop);
+      color: var(--ice);
+      border-color: var(--pop)
+    }
+
+    .lordnote {
+      color: var(--pop);
+      margin: .75rem 0 0;
+      font-weight: 500
+    }
+
+    section {
+      margin-top: 4.5rem
+    }
+
+    /* linea tratteggiata, come quella di centro pista */
+    .rink {
+      height: 4px;
+      margin: 4rem 0 0;
+      background: repeating-linear-gradient(90deg, var(--red) 0 14px, transparent 14px 20px)
+    }
+
+    .grid {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: .15rem;
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--line)
+      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr))
     }
 
-    .rows li:first-child {
-      padding-top: 0
+    .card {
+      position: relative;
+      background: var(--ice-2);
+      border: 2px solid var(--aqua);
+      border-radius: .9rem;
+      padding: 1.25rem 1.25rem 1.1rem;
+      box-shadow: 6px 6px 0 var(--red);
+      transition: transform .15s, box-shadow .15s
     }
 
-    .rows a {
-      font-family: var(--head);
-      font-weight: 800;
-      font-size: 1.2rem;
-      text-decoration: none;
-      display: inline-block
+    .card:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 9px 9px 0 var(--red)
     }
 
-    .rows a:hover {
-      text-decoration: underline;
-      text-decoration-color: var(--aqua)
-    }
-
-    .rows span {
+    .card p {
+      margin: 0 0 .75rem;
       color: var(--mute)
     }
 
-    .rows small {
-      color: var(--mute);
-      font-size: .9rem;
+    .card p:last-child {
+      margin-bottom: 0
+    }
+
+    .card ul {
+      margin: .25rem 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: .35rem
+    }
+
+    .card .dom {
+      font-size: .85rem;
+      color: var(--aqua);
       word-break: break-all
     }
 
-    p {
-      margin: 0 0 1rem;
-      max-width: 38rem
+    .card h3 a {
+      text-decoration: none
     }
 
-    .muted {
-      color: var(--mute)
+    .card h3 a::after {
+      content: "";
+      position: absolute;
+      inset: 0
     }
 
-    .links {
+    .badge {
+      position: absolute;
+      top: -.8rem;
+      right: 1rem;
+      background: var(--red-d);
+      color: #fff;
+      font: 800 .8rem var(--head);
+      padding: .15rem .7rem;
+      border-radius: 1rem;
+      transform: rotate(3deg)
+    }
+
+    .soon {
+      display: inline-block;
+      margin-top: .25rem;
+      font: 800 .85rem var(--head);
+      color: #fff;
+      background: var(--red-d);
+      padding: .1rem .6rem;
+      border-radius: 1rem
+    }
+
+    .social {
       display: flex;
       flex-wrap: wrap;
-      gap: .5rem 1.5rem;
+      gap: 1rem;
+      list-style: none;
       margin: 0;
-      padding: 0;
-      list-style: none
+      padding: 0
     }
 
-    .note {
-      background: var(--ice-2);
-      border-left: 4px solid var(--aqua);
-      padding: .9rem 1.1rem;
-      color: var(--mute);
-      font-size: .95rem
+    .social a {
+      display: inline-block;
+      font: 800 1.2rem var(--head);
+      text-decoration: none;
+      color: #fff;
+      background: var(--red-d);
+      padding: .7rem 1.4rem;
+      border-radius: .7rem;
+      box-shadow: 4px 4px 0 var(--aqua);
+      transition: transform .15s, box-shadow .15s
+    }
+
+    .social a:hover {
+      color: #fff;
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 var(--aqua)
     }
 
     footer {
-      margin-top: 4rem;
+      margin-top: 4.5rem;
       padding-top: 1.5rem;
       border-top: 1px solid var(--line);
       color: var(--mute);
       font-size: .9rem
     }
 
-    @media (min-width:40rem) {
-      .rows li {
-        grid-template-columns: 15rem 1fr;
-        gap: 1.5rem;
-        align-items: baseline
+    footer p {
+      margin: 0;
+      max-width: 40rem
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+
+      .card,
+      .social a {
+        transition: none
       }
 
-      .rows small {
-        grid-column: 2
+      .card:hover,
+      .social a:hover {
+        transform: none
       }
     }
   </style>
@@ -209,88 +296,106 @@
 <body>
   <main>
     <header>
+      <p class="hello">Ciao, sono</p>
       <h1>Giovanni Aquila</h1>
-      <p class="lead">Senior IT Application Architect in Intesa Sanpaolo. Nel tempo libero costruisco strumenti per
-        l’Hitball e per l’hockey.</p>
+      <p class="lead">Di giorno sono Senior IT Application Architect in Intesa Sanpaolo e faccio il sindacalista. Nel
+        resto del tempo faccio il giudice sportivo, l’arbitro, il tifoso e costruisco strumenti per l’Hitball e per
+        l’hockey.</p>
+      <ul class="stickers">
+        <li>Giudice sportivo PLV Hitball</li>
+        <li>Arbitro</li>
+        <li>Coordinatore RSA FISAC CGIL</li>
+        <li>Italo-canadese</li>
+        <li class="lord">Lord of Kilnaish and Glencoe</li>
+      </ul>
+      <p class="lordnote">Sì, il titolo è vero: me l’ha regalato mia moglie.</p>
       <p class="sub">Laureato magistrale in Ingegneria Informatica presso il Politecnico di Torino.</p>
-      <p class="sub">Italo-canadese, Lord of Kilnaish and Glencoe.</p>
     </header>
 
-    <section id="hitball">
-      <h2>PLV Hitball</h2>
-      <p>Sono giudice sportivo e arbitro. Ho giocato, dal 2018/19 fino al 2025/26.</p>
-      <ul class="links">
-        <li><a href="https://www.plvhitball.it/organigramma/">Organigramma PLV</a></li>
-        <li><a href="mailto:giudicesportivo@plvhitball.it">giudicesportivo@plvhitball.it</a></li>
-        <li><a href="https://referto.plvhitball.it/index.php?route=team/player/view&amp;player_id=176">Le mie
-            statistiche da giocatore</a></li>
-      </ul>
-    </section>
-
-    <section id="hockey">
-      <h2>Hockey</h2>
-      <p>Gioco a livello amatoriale con i Torino Bulls. Le statistiche da hockey arriveranno presto.</p>
-    </section>
-
-    <section id="sindacato">
-      <h2>Sindacato</h2>
-      <p>Sono coordinatore delle RSA per FISAC CGIL in Intesa Sanpaolo.</p>
-      <ul class="links">
-        <li><a href="https://fisacgruppointesasanpaolo.it/chi-dove-cosa/coordinatori-delle-rsa/">Coordinatori delle
-            RSA</a></li>
-      </ul>
-    </section>
-
-    <section id="passioni">
-      <h2>Fuori dal lavoro</h2>
-      <p>Tifo Ferrari in Formula 1, il Milan nel calcio, i Toronto Maple Leafs e la nazionale canadese di hockey. E mi
-        piacciono i videogiochi.</p>
+    <section id="me">
+      <h2>Dentro e fuori dal campo</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>PLV Hitball</h3>
+          <p>Sono giudice sportivo e arbitro. Ho giocato, dal 2018/19 fino al 2025/26.</p>
+          <ul>
+            <li><a href="https://www.plvhitball.it/organigramma/">Organigramma PLV</a></li>
+            <li><a href="mailto:giudicesportivo@plvhitball.it">giudicesportivo@plvhitball.it</a></li>
+            <li><a href="https://referto.plvhitball.it/index.php?route=team/player/view&amp;player_id=176">Le mie
+                statistiche da giocatore</a></li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Hockey</h3>
+          <p>Gioco a livello amatoriale con i Torino Bulls.</p>
+          <span class="soon">Statistiche in arrivo</span>
+        </article>
+        <article class="card">
+          <h3>Sindacato</h3>
+          <p>Sono coordinatore delle RSA per FISAC CGIL in Intesa Sanpaolo.</p>
+          <ul>
+            <li><a href="https://fisacgruppointesasanpaolo.it/chi-dove-cosa/coordinatori-delle-rsa/">Coordinatori delle
+                RSA</a></li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Tifo e videogiochi</h3>
+          <p>Ferrari in Formula 1, Milan nel calcio, Toronto Maple Leafs e nazionale canadese di hockey. E mi piacciono
+            i videogiochi.</p>
+        </article>
+      </div>
     </section>
 
     <section id="contatti">
       <h2>Dove trovarmi</h2>
-      <ul class="links">
+      <ul class="social">
         <li><a href="https://github.com/giovanniaquila92">GitHub</a></li>
         <li><a href="https://www.linkedin.com/in/giovanni-aquila/">LinkedIn</a></li>
         <li><a href="https://www.instagram.com/aquila1992/">Instagram</a></li>
       </ul>
     </section>
 
-    <section id="strumenti">
-      <h2>Strumenti che ho costruito</h2>
-      <ul class="rows">
-        <li>
-          <a href="https://calendargenerator.onrender.com">Calendar Generator</a>
-          <span>Crea e genera il calendario del campionato Hitball.</span>
-        </li>
-        <li>
-          <a href="https://hitball.giovanniaquila.com">Calendari delle squadre</a>
-          <span>Le squadre Hitball e i loro file ICS da scaricare.</span>
-        </li>
-        <li>
-          <a href="https://hitball.giovanniaquila.com/arbitri">Calendari degli arbitri</a>
-          <span>Gestione degli ICS per gli arbitri.</span>
-        </li>
-        <li>
-          <a href="https://hitball.giovanniaquila.com/locations">Location</a>
-          <span>Gestione dei palazzetti e dei loro indirizzi.</span>
-        </li>
-        <li>
-          <a href="https://bulls.giovanniaquila.com/torino-bulls">Torino Bulls</a>
-          <span>ICS delle squadre dei Torino Bulls nei campionati LHL Hockey Libertas, per le varie categorie.</span>
-        </li>
-      </ul>
-    </section>
+    <div class="rink" aria-hidden="true"></div>
 
-    <section id="eagle">
-      <h2>Eagle AI</h2>
-      <p>Il mio agente personale su Telegram e Siri, basato su Gemini, capace di modificare il proprio codice. Progetto
-        privato.</p>
+    <section id="strumenti">
+      <h2>Roba che ho costruito</h2>
+      <div class="grid">
+        <article class="card">
+          <h3><a href="https://calendargenerator.onrender.com">Calendar Generator</a></h3>
+          <p>Crea e genera il calendario del campionato Hitball.</p>
+          <span class="dom">calendargenerator.onrender.com</span>
+        </article>
+        <article class="card">
+          <h3><a href="https://hitball.giovanniaquila.com">Calendari delle squadre</a></h3>
+          <p>Le squadre Hitball e i loro file ICS da scaricare.</p>
+          <span class="dom">hitball.giovanniaquila.com</span>
+        </article>
+        <article class="card">
+          <h3><a href="https://hitball.giovanniaquila.com/arbitri">Calendari degli arbitri</a></h3>
+          <p>Gestione degli ICS per gli arbitri.</p>
+          <span class="dom">hitball.giovanniaquila.com/arbitri</span>
+        </article>
+        <article class="card">
+          <h3><a href="https://hitball.giovanniaquila.com/locations">Location</a></h3>
+          <p>Gestione dei palazzetti e dei loro indirizzi.</p>
+          <span class="dom">hitball.giovanniaquila.com/locations</span>
+        </article>
+        <article class="card">
+          <h3><a href="https://bulls.giovanniaquila.com/torino-bulls">Torino Bulls</a></h3>
+          <p>ICS delle squadre dei Torino Bulls nei campionati LHL Hockey Libertas, per le varie categorie.</p>
+          <span class="dom">bulls.giovanniaquila.com/torino-bulls</span>
+        </article>
+        <article class="card">
+          <span class="badge">privato</span>
+          <h3>Eagle AI</h3>
+          <p>Il mio agente personale su Telegram e Siri, basato su Gemini, capace di modificare il proprio codice.</p>
+        </article>
+      </div>
     </section>
 
     <footer>
-      <p class="note">Le opinioni e i contenuti di questo sito sono personali e non rappresentano Intesa Sanpaolo, FISAC
-        CGIL o PLV Hitball.</p>
+      <p>Le opinioni e i contenuti di questo sito sono personali e non rappresentano Intesa Sanpaolo, FISAC CGIL o PLV
+        Hitball.</p>
     </footer>
   </main>
 </body>
