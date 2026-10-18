@@ -58,7 +58,8 @@
       text-decoration-color: var(--red)
     }
 
-    a:focus-visible {
+    a:focus-visible,
+    .stickers li:focus-visible {
       outline: 3px solid var(--pop);
       outline-offset: 3px;
       border-radius: 2px
@@ -111,28 +112,27 @@
       margin: 1.5rem 0 1.25rem
     }
 
-    .sub {
-      color: var(--mute);
-      margin: 1.25rem 0 0;
-      max-width: 40rem
-    }
-
     .stickers {
       display: flex;
       flex-wrap: wrap;
-      gap: .6rem;
+      gap: .7rem;
       list-style: none;
       margin: 0;
       padding: 0
     }
 
     .stickers li {
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
       font: 800 .95rem var(--head);
       padding: .45rem .9rem;
       border: 2px solid var(--red);
       border-radius: 2rem;
       background: var(--ice-2);
-      transform: rotate(-1.5deg)
+      box-shadow: 0 0 0 var(--red);
+      transform: rotate(-1.5deg);
+      transition: transform .15s, box-shadow .15s, background .15s, color .15s
     }
 
     .stickers li:nth-child(even) {
@@ -142,12 +142,29 @@
     .stickers li.lord {
       background: var(--pop);
       color: var(--ice);
-      border-color: var(--pop)
+      border-color: var(--pop);
+      box-shadow: 0 0 0 var(--pop)
+    }
+
+    /* al passaggio (o al tocco) escono in fuori e invertono i colori */
+    .stickers li:hover,
+    .stickers li.on {
+      background: var(--snow);
+      color: var(--ice);
+      box-shadow: 5px 5px 0 var(--red);
+      transform: translate(-3px, -3px) rotate(0deg)
+    }
+
+    .stickers li.lord:hover,
+    .stickers li.lord.on {
+      background: var(--ice);
+      color: var(--pop);
+      box-shadow: 5px 5px 0 var(--pop)
     }
 
     .lordnote {
       color: var(--pop);
-      margin: .75rem 0 0;
+      margin: .9rem 0 0;
       font-weight: 500
     }
 
@@ -164,8 +181,8 @@
 
     .grid {
       display: grid;
-      gap: 1.25rem;
-      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr))
+      gap: 1.75rem;
+      grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr))
     }
 
     .card {
@@ -281,7 +298,8 @@
     @media (prefers-reduced-motion:reduce) {
 
       .card,
-      .social a {
+      .social a,
+      .stickers li {
         transition: none
       }
 
@@ -300,32 +318,30 @@
       <h1>Giovanni Aquila</h1>
       <p class="lead">Di giorno sono Senior IT Application Architect in Intesa Sanpaolo e faccio il coordinatore
         sindacale per la FISAC CGIL. Nel resto del tempo faccio il giudice sportivo, l’arbitro, il tifoso e costruisco
-        strumenti per l’Hitball e per
-        l’hockey. 24/7 Marito e padre di una bimba e di una gatta</p>
+        strumenti per l’Hitball e per l’hockey. 24/7 Marito e padre di una bimba e di una gatta</p>
       <ul class="stickers">
-        <li>Senior IT Application Architect</li>
-        <li>Laureato magistrale in Ingegneria Informatica presso il Politecnico di Torino</li>
-        <li>Coordinatore RSA FISAC CGIL</li>
-        <li>Giudice sportivo PLV Hitball</li>
-        <li>Italo-Canadese</li>
-        <li class="lord">Lord of Kilnaish and Glencoe</li>
+        <li tabindex="0">Senior IT Application Architect</li>
+        <li tabindex="0">Laureato magistrale in Ingegneria Informatica presso il Politecnico di Torino</li>
+        <li tabindex="0">Coordinatore RSA FISAC CGIL</li>
+        <li tabindex="0">Giudice sportivo PLV Hitball</li>
+        <li tabindex="0">Italo-Canadese</li>
+        <li tabindex="0" class="lord">Lord of Kilnaish and Glencoe</li>
       </ul>
       <p class="lordnote">Sì, il titolo è vero: me l’ha regalato mia moglie.</p>
-      <p class="sub">.</p>
     </header>
 
     <section id="me">
       <h2>Dentro e fuori dal campo</h2>
-      <article class="card">
-        <h3>Sindacato</h3>
-        <p>Sono coordinatore delle RSA per FISAC CGIL in Intesa Sanpaolo per il Polo Tecnologico di Moncalieri.</p>
-        <ul>
-          <li><a href="https://fisacgruppointesasanpaolo.it/chi-dove-cosa/coordinatori-delle-rsa/">Coordinatori delle
-              RSA</a></li>
-          <li><a href="mailto:ptmfisac@fisac.net">ptmfisac@fisac.net</a></li>
-        </ul>
-      </article>
       <div class="grid">
+        <article class="card">
+          <h3>Sindacato</h3>
+          <p>Sono coordinatore delle RSA per FISAC CGIL in Intesa Sanpaolo per il Polo Tecnologico di Moncalieri.</p>
+          <ul>
+            <li><a href="https://fisacgruppointesasanpaolo.it/chi-dove-cosa/coordinatori-delle-rsa/">Coordinatori delle
+                RSA</a></li>
+            <li><a href="mailto:ptmfisac@fisac.net">ptmfisac@fisac.net</a></li>
+          </ul>
+        </article>
         <article class="card">
           <h3>PLV Hitball</h3>
           <p>Sono giudice sportivo e arbitro. Ho giocato, dal 2018/19 fino al 2025/26.</p>
@@ -342,13 +358,11 @@
           <h3>Hockey</h3>
           <p>Gioco a livello amatoriale con i Torino Bulls nella Lega Hockey Libertas.</p>
           <ul>
-            <li><a href="https://legahockeylibertas.it/"> Lega Hockey Libertas</a></li>
-            <li><a href="https://torinobulls.it/"> Torino Bulls</a></li>
+            <li><a href="https://legahockeylibertas.it/">Lega Hockey Libertas</a></li>
+            <li><a href="https://torinobulls.it/">Torino Bulls</a></li>
           </ul>
           <span class="soon">Statistiche in arrivo</span>
-
         </article>
-
         <article class="card">
           <h3>Tifo e videogiochi</h3>
           <p>Ferrari in Formula 1, Milan nel calcio, Toronto Maple Leafs e nazionale canadese di hockey. E mi piacciono
@@ -404,6 +418,14 @@
         Hitball.</p>
     </footer>
   </main>
+  <script>
+    document.querySelectorAll('.stickers li').forEach(function (li) {
+      li.addEventListener('click', function () { li.classList.toggle('on'); });
+      li.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); li.classList.toggle('on'); }
+      });
+    });
+  </script>
 </body>
 
 </html>
