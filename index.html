@@ -195,6 +195,10 @@
       transition: transform .15s, box-shadow .15s
     }
 
+    .card.wide {
+      grid-column: 1/-1
+    }
+
     .card:hover {
       transform: translate(-3px, -3px);
       box-shadow: 9px 9px 0 var(--red)
@@ -215,6 +219,21 @@
       list-style: none;
       display: grid;
       gap: .35rem
+    }
+
+    .card ul.tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+      margin: .75rem 0
+    }
+
+    .tags li {
+      font: 800 .8rem var(--head);
+      padding: .15rem .65rem;
+      border: 2px solid var(--red);
+      border-radius: 1rem;
+      background: var(--ice)
     }
 
     .card .dom {
@@ -316,15 +335,14 @@
     <header>
       <p class="hello">Ciao, sono</p>
       <h1>Giovanni Aquila</h1>
-      <p class="lead">Di giorno sono Senior IT Application Architect in Intesa Sanpaolo e faccio il coordinatore
-        sindacale per la FISAC CGIL. Nel resto del tempo faccio il giudice sportivo, l’arbitro, il tifoso e costruisco
-        strumenti per l’Hitball e per l’hockey. 24/7 Marito e padre di una bimba e di una gatta</p>
+      <p class="lead">Architetto IT e sindacalista di giorno, Hitball e hockey nel resto del tempo. 24/7 cuoco personale
+        per moglie, bimba e gatta.</p>
       <ul class="stickers">
+        <li tabindex="0">Italo-Canadese</li>
         <li tabindex="0">Senior IT Application Architect</li>
-        <li tabindex="0">Laureato magistrale in Ingegneria Informatica presso il Politecnico di Torino</li>
+        <li tabindex="0">LM in Ingegneria Informatica PoliTo</li>
         <li tabindex="0">Coordinatore RSA FISAC CGIL</li>
         <li tabindex="0">Giudice sportivo PLV Hitball</li>
-        <li tabindex="0">Italo-Canadese</li>
         <li tabindex="0" class="lord">Lord of Kilnaish and Glencoe</li>
       </ul>
       <p class="lordnote">Sì, il titolo è vero: me l’ha regalato mia moglie.</p>
@@ -335,7 +353,8 @@
       <div class="grid">
         <article class="card">
           <h3>Sindacato</h3>
-          <p>Sono coordinatore delle RSA per FISAC CGIL in Intesa Sanpaolo per il Polo Tecnologico di Moncalieri.</p>
+          <p>Coordinatore delle RSA per il Polo Tecnologico di Moncalieri dal 2026. Dal 2024 anche dirigente provinciale
+            e rappresentante sindacale aziendale.</p>
           <ul>
             <li><a href="https://fisacgruppointesasanpaolo.it/chi-dove-cosa/coordinatori-delle-rsa/">Coordinatori delle
                 RSA</a></li>
@@ -344,14 +363,16 @@
         </article>
         <article class="card">
           <h3>PLV Hitball</h3>
-          <p>Sono giudice sportivo e arbitro. Ho giocato, dal 2018/19 fino al 2025/26.</p>
+          <p>Giudice sportivo nazionale e arbitro (ufficiale di gara). Ho giocato dal 2018/19 al 2025/26.</p>
+          <ul class="tags">
+            <li>2° al PLV Start 2023/24</li>
+            <li>4° in Eccellenza B2</li>
+          </ul>
           <ul>
             <li><a href="https://www.plvhitball.it/organigramma/">Organigramma PLV</a></li>
             <li><a href="mailto:giudicesportivo@plvhitball.it">giudicesportivo@plvhitball.it</a></li>
-            <li>Secondo classificato al PLV Start 2023/24</li>
-            <li>Massimo piazzamento in Campionato Eccellenza B2: quarto posto</li>
-            <li><a href="https://referto.plvhitball.it/index.php?route=team/player/view&amp;player_id=176">Le mie
-                statistiche da giocatore e cronistoria della carriera</a></li>
+            <li><a href="https://referto.plvhitball.it/index.php?route=team/player/view&amp;player_id=176">Statistiche
+                da giocatore e cronistoria</a></li>
           </ul>
         </article>
         <article class="card">
@@ -364,9 +385,41 @@
           <span class="soon">Statistiche in arrivo</span>
         </article>
         <article class="card">
-          <h3>Tifo e videogiochi</h3>
-          <p>Ferrari in Formula 1, Milan nel calcio, Toronto Maple Leafs e nazionale canadese di hockey. E mi piacciono
-            i videogiochi.</p>
+          <h3>Tifo, videogiochi e gadget</h3>
+          <ul class="tags">
+            <li>Ferrari</li>
+            <li>Milan</li>
+            <li>Toronto Maple Leafs</li>
+            <li>Canada hockey</li>
+          </ul>
+          <p>Vivo nell’ecosistema Apple e possiedo console Sony e Nintendo: nessuna guerra di religione.</p>
+        </article>
+        <article class="card">
+          <h3>In pista</h3>
+          <p>Mi piace il kart, anche se non ci vado di continuo. In pista ho guidato anche una Formula Renault e una
+            Ferrari 458 Italia.</p>
+          <ul class="tags">
+            <li>Kart</li>
+            <li>Formula Renault</li>
+            <li>Ferrari 458 Italia</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Strada fatta</h3>
+          <p>Tester dell’infotainment dell’Alfa Giulia, software per i robot COMAU, Accenture e ora architetto in Intesa
+            Sanpaolo.</p>
+          <ul class="tags">
+            <li>Certificato AWS Cloud Practitioner</li>
+          </ul>
+        </article>
+        <article class="card wide">
+          <h3>Prima di tutto questo</h3>
+          <p>Capo scout per 12 anni, con ragazzi da 8 a 16 anni. Arbitro di calcio FIGC nel 2012-2013.</p>
+          <p>Il mio primo sito era un CV su un Raspberry Pi di casa, con dominio .xyz da 1 € l’anno. Sono passato al
+            .com solo per la PEC.</p>
+          <ul class="tags">
+            <li>Open Data Day Torino: 1° nel 2017</li>
+          </ul>
         </article>
       </div>
     </section>
@@ -403,7 +456,7 @@
         <article class="card">
           <span class="badge">privato</span>
           <h3>Eagle AI</h3>
-          <p>Il mio agente personale su Telegram e Siri, basato su Gemini, capace di modificare il proprio codice.</p>
+          <p>Agente personale su Telegram e Siri che può modificare il proprio codice.</p>
         </article>
         <article class="card">
           <h3><a href="https://calendargenerator.onrender.com">Calendar Generator</a></h3>
